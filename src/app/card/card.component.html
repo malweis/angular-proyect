@@ -1,0 +1,15 @@
+<mat-card class="card">
+    <div class="image-container">
+      <img [src]="data.imageSrc"  width="230" height="300" alt="Dog Image">
+    </div>
+    <div class="data-container ">
+      <h3 class="card-title">PERRO PERDIDO</h3>
+      <p> {{ data.descripcion}}</p>
+      <p>Ultima vez visto: {{ data.lastTimeSeen }}</p>
+     
+      <p>Contact : {{ data.contactNumber }}</p>
+      <p> {{ data.country }}</p>
+      <button mat-button color="primary" (click)="viewReport()">Ver reporte completo</button>
+    </div>
+  </mat-card>
+  
