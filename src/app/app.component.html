@@ -327,12 +327,59 @@
 
 <div class="content" role="main">
 
-  <div>
-    <h1>List of Cards</h1>
-    <div *ngFor="let item of cardItems" class="card-container">
-      <app-card [data]="item"></app-card>
+  <form (ngSubmit)="submitReport()" #reportForm="ngForm" class="formulario">
+    <!-- Image Source -->
+    <div class="form-group">
+      <label for="imageSrc">Image Source</label>
+      <input type="text" id="imageSrc" [(ngModel)]="formData.imageSrc" name="imageSrc">
+      <div *ngIf="errorMessages.imageSrc" class="error-message">{{ errorMessages.imageSrc }}</div>
     </div>
+  
+    <!-- Description -->
+    <div class="form-group">
+      <label for="descripcion">Description</label>
+      <input type="text" id="descripcion" [(ngModel)]="formData.descripcion" name="descripcion">
+      <div *ngIf="errorMessages.descripcion" class="error-message">{{ errorMessages.descripcion }}</div>
+    </div>
+  
+    <!-- Last Time Seen -->
+    <div class="form-group">
+      <label for="lastTimeSeen">Last Time Seen</label>
+      <input type="text" id="lastTimeSeen" [(ngModel)]="formData.lastTimeSeen" name="lastTimeSeen">
+      <div *ngIf="errorMessages.lastTimeSeen" class="error-message">{{ errorMessages.lastTimeSeen }}</div>
+    </div>
+  
+    <!-- Contact Number -->
+    <div class="form-group">
+      <label for="contactNumber">Contact Number</label>
+      <input type="text" id="contactNumber" [(ngModel)]="formData.contactNumber" name="contactNumber">
+      <div *ngIf="errorMessages.contactNumber" class="error-message">{{ errorMessages.contactNumber }}</div>
+    </div>
+  
+    <!-- Country -->
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" id="country" [(ngModel)]="formData.country" name="country">
+      <div *ngIf="errorMessages.country" class="error-message">{{ errorMessages.country }}</div>
+    </div>
+  
+    <!-- Display individual error messages -->
+    <div *ngIf="reportForm.submitted && reportForm.invalid" class="error-message">
+      Please fill in all the required fields.
+    </div>
+  
+    <!-- Button to submit the form -->
+    <button type="submit" mat-button color="primary">Submit Report</button>
+  </form>
+  
+  
+  <!-- List of Cards -->
+  <h1>List of Cards</h1>
+  <div *ngFor="let item of cardItems" class="card-container">
+    <app-card [data]="item"></app-card>
   </div>
+  
+
   
 
   <!-- Footer -->
